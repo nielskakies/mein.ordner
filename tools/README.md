@@ -57,3 +57,31 @@ Gegen generierte Clips in 1920x1080, 1080x1920, 720x720 und 640x480 mit
 Gesamtlaengen (harte Schnitte 18,07 s; mit 0,4 s Crossfade 10,79 s = 4x3s - 3x0,4s),
 durchgehender Musikpegel ueber die volle Laenge bei nur 4 s langer Quelldatei,
 sowie Blenden und Blur-Balken per Kontaktbogen.
+
+## Laufzeit
+
+Belastungstest mit 36 generierten Clips (gemischt 1920x1080 / 1080x1920 /
+1440x1080, 24/25/30 fps, je 6 s Quellmaterial) auf 4 Kernen:
+
+| | |
+|---|---|
+| Renderdauer | 269 s (rund 4,5 Minuten) |
+| Ausgabelaenge | 126,9 s bei `--max-dur 4 --xfade 0.5` |
+| Dateigroesse | 80 MB |
+
+Echtes Kameramaterial ist meist langsamer als dieser Test: 4K-HEVC vom
+Handy dekodiert deutlich zaeher als synthetisches 1080p. Mit dem Zwei- bis
+Dreifachen rechnen.
+
+## Laenge im Voraus ausrechnen
+
+    Gesamtlaenge = Anzahl x max-dur - (Anzahl - 1) x xfade
+
+Bei 36 Clips und 0,5 s Crossfade:
+
+| `--max-dur` | Laenge |
+|---|---|
+| 4 s | 2:07 |
+| 3 s | 1:30 |
+| 2,5 s | 1:12 |
+| 2 s | 0:55 |
