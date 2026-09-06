@@ -3,9 +3,19 @@
 Schneidet die Clips aus `clips/` in Dateinamen-Reihenfolge zu einem Reel
 zusammen. Braucht `ffmpeg` (im Container per `apt-get install -y ffmpeg`).
 
-## Beispiele
+## Schnellstart
 
-    # Instagram/TikTok-Reel, hochkant, alles in voller Laenge, harte Schnitte
+`tools/reel.sh` enthaelt die abgestimmten Einstellungen fuer dieses Reel
+(9:16 hochkant, mittiger Crop, max. 4 s pro Clip, 0,5 s Crossfade, 0,5 s
+Ein-/Ausblenden, Originalton). Clips nach `clips/` legen, dann:
+
+    tools/reel.sh
+
+Zusaetzliche Optionen werden durchgereicht, z.B. `tools/reel.sh --music song.m4a`.
+
+## Weitere Beispiele
+
+    # Alles in voller Laenge, harte Schnitte
     tools/make-reel.sh --aspect 9:16 --fit cover
 
     # Schnelles Reel-Tempo: jeder Clip max. 3s, weiche Uebergaenge, Blenden
